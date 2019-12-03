@@ -1,4 +1,4 @@
-class FollowsController < ApplicationController
+class Api::V1::FollowsController < Api::V1::ApiController
   before_action :set_follow, only: [:destroy]
 
   def create

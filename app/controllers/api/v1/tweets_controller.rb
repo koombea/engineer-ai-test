@@ -1,4 +1,4 @@
-class TweetsController < ApplicationController
+class Api::V1::TweetsController < Api::V1::ApiController
   before_action :set_tweet, only: %i[show update destroy]
   before_action :set_tweets, only: [:index_by_user]
 

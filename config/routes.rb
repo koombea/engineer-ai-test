@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   devise_for :users,
-      path: '',
+      path: 'users',
       :defaults => { :format => 'json' },
       path_names: {
         sign_in: 'login',
@@ -9,22 +9,26 @@ Rails.application.routes.draw do
         registration: 'signup'
       },
       controllers: {
-        sessions: 'sessions',
-        registrations: 'registrations'
+        sessions: 'user/sessions',
+        registrations: 'user/registrations'
       }
 
-  resources :tweets
-  scope 'users/:user_id' do
-    get 'tweets', to: 'tweets#index_by_user'
-
-    post 'follow', to: 'follows#create'
-    delete 'unfollow', to: 'follows#destroy'
-    get 'follow', to: 'follows#show'
-
-    get 'followers', to: 'users#followers'
-    get 'following', to: 'users#following'
+  namespace :api do
+    namespace :v1 do
+      resources :tweets
+      scope 'users/:user_id' do
+        get 'tweets', to: 'tweets#index_by_user'
     
-    get '', to: 'users#show'
+        post 'follow', to: 'follows#create'
+        delete 'unfollow', to: 'follows#destroy'
+        get 'follow', to: 'follows#show'
+    
+        get 'followers', to: 'users#followers'
+        get 'following', to: 'users#following'
+        
+        get '', to: 'users#show'
+      end
+      get 'following_tweets', to: 'tweets#following_tweets'
+    end
   end
-  get 'following_tweets', to: 'tweets#following_tweets'
 end
