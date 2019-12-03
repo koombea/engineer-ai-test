@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   end
 
   def followers
-    render_ok @user.followers
+    paginate_and_render @user.followers
   end
 
   def following
-    render_ok @user.followees
+    paginate_and_render @user.followees
   end
 
   private

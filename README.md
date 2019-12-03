@@ -1,24 +1,5 @@
-# README
+.env file was not added to .gitignore because is needed to run devise, otherwhise it would be excluded from git
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+For sorting tweets, you can send sort param with the values asc or desc depending on which way you want to sort them, (sort=asc or sort=desc)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For paginating, per_page and page params must be sended as query params, otherwhise default values will be per_page: 20 and page: 1
